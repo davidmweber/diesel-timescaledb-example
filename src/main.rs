@@ -70,7 +70,9 @@ fn main() {
             b.push(foo(i));
             count += 1;
         }
-        insert_into(speedy).values(&b).execute(&mut conn).unwrap();
+        insert_into(speedy).values(&b)
+            .on_conflict_do_nothing()
+            .execute(&mut conn).unwrap();
         let elapsed = now.elapsed();
         println!("Inserted {} rows in {} ms at {} rows per second", count, elapsed.as_millis(), count as f64 / elapsed.as_secs_f64());
     }
