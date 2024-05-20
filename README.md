@@ -5,13 +5,11 @@ interop.
 ## Setup and running
 You just need a Rust environment and a working Docker to get running. Start TimescaleDB using Docker:
 ```bash
-docker run --rm -e POSTGRES_PASSWORD=admin -p 5433:5432 timescale/timescaledb-ha:pg16
+docker compose up -d
 ```
-Note the use of port 5433 for Timescale as I have a local Postgres running on 5432. Now create a database
-called `example`:
-```bash
-createdb -p 5433 -h localhost -U postgres example
-```
+Note that it used use of port 5433 for Timescale as I have a local Postgres running on 5432. This will create
+a database called `example` with a user name and password both seet to `test`. 
+
 Install the [diesel cli](https://diesel.rs) and run the migrations:
 ```bash
 cargo install diesel_cli --no-default-features --features postgres

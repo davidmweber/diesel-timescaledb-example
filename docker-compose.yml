@@ -1,0 +1,10 @@
+services:
+  timescaledb:
+    image: timescale/timescaledb:latest-pg16
+    restart: always
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: example
